@@ -1,4 +1,4 @@
-import { createAction } from "redux-actions";
+import { createAction, handleActions } from "redux-actions";
 
 // 액션 타입 정의하기
 const CHANGE_INPUT = 'todos/CHANGE_INPUT'; // 인풋 값을 설정함
@@ -36,33 +36,25 @@ const initialState = {
     ]
 };
 
-function todos(state = initialState, action) {
-    switch (action.type) {
-        case CHANGE_INPUT :
-            return {
-                ...state,
-                input : action.input
-            };
-        case INSERT : 
-            return {
-                ...state,
-                todos : state.todos.concat(action.todo)
-            };
-        case TOGGLE : 
-            return {
-                ...state,
-                todos : state.todos.map(todo => 
-                    todo.id === action.id ? { ...todo, done : !todo.done } : todo
-                )
-            };
-        case REMOVE : 
-            return {
-                ...state,
-                todos : state.todos.filter(todo => todo.id === action.id)
-            };
-        default : 
-        return state;
-        }
-    }
+const todos = handleActions(
+    {
+        [CHANGE_INPUT]: (state, action) => ({...state, input: action.payload}),
+        [INSERT]: (state, action) => ({
+            ...state,
+            todos: state.todos.concat(action.payload),
+        }),
+        [TOGGLE]: (state, action) => ({
+            ...state,
+            todos: state.todos.map(todo => 
+                todo.id === action.payload ? { ...todo, done: !todo.done } : todo,
+            ),
+        }),
+        [REMOVE]: (state, action) => ({
+            ...state,
+            todos: state.todos.filter(todo => todo.id !== action.payload),
+        }),
+    },
+    initialState,
+);
 
 export default todos;
