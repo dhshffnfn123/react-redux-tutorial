@@ -1,3 +1,4 @@
+import { createAction } from "redux-actions";
 
 // 액션 타입 정의하기
 const CHANGE_INPUT = 'todos/CHANGE_INPUT'; // 인풋 값을 설정함
@@ -6,29 +7,17 @@ const TOGGLE = 'todos/TOGGLE'; // todo를 체크/체크 해제
 const REMOVE = 'todos/REMOVE'; // todo를 삭제
 
 // 액션 생성 함수
-export const changeInput = input => ({
-    type : CHANGE_INPUT,
-    input
-});
-let id = 3;
-export const insert = text => ({
-    type : INSERT,
-    todo : {
-        id : id++,
-        text,
-        done : false
-    }
-});
+export const changeInput = createAction(CHANGE_INPUT, input => input);
 
-export const toggle = id => ({
-    type : TOGGLE,
-    id
-});
+let id = 3; // insert가 호출될 때마다 1씩 더해진다.
+export const insert = createAction(INSERT, text => ({
+    id: id++,
+    text,
+    done: false,
+}));
 
-export const remove = id => ({
-    type : REMOVE,
-    id
-});
+export const toggle = createAction(TOGGLE, id => id);
+export const remove = createAction(REMOVE, id => id);
 
 // 초기 상태 및 리듀서 함수 만들기
 const initialState = {
