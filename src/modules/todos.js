@@ -1,3 +1,4 @@
+
 // 액션 타입 정의하기
 const CHANGE_INPUT = 'todos/CHANGE_INPUT'; // 인풋 값을 설정함
 const INSERT = 'todos/INSERT'; // 새로운 todo 등록
