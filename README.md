@@ -6,7 +6,7 @@
 >>>>> 더 편하게 사용하는 방법 알아보기
 >>>>>> connect 대신 Hooks 사용하기
 ___
-### Install
+### 🛠 Install
 > redux react-redux<br>
 > redux-devtools-extension<br>
 > immer
