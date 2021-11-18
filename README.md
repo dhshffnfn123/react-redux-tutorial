@@ -31,3 +31,14 @@ ___
 > - 사용법 : const 결과 = useSelector(상태 선택 함수);
 >   - 위의 __상태 선택 함수__ 는 mapStateToProps와 형태가 같다. 
 
+## useDispatch
+> + 이 Hook은 컴포넌트 내부에서 스토어의 내장 함수 dispatch를 사용할 수 있게 해준다.
+> - 사용법 : const dispatch = useDispatch();
+>   - dispatch({ type: 'SAMPLE_ACTION' });
+> * useDispatch를 사용할 때는 컴포넌트 성능 최적화를 위해 useCallback을 함께 사용하는 것이 좋다.
+
+## useStore
+> + useStore Hooks를 사용하면 컴포넌트 내부에서 리덕스 스토어 객체를 직접 사용할 수 있다.
+> - 사용법 : const store = useStore();
+>   - store.dispatch({ type : 'SAMPLE_ACTION });
+>   - store.getState();
