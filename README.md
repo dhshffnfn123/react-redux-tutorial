@@ -8,7 +8,8 @@
 ___
 ### Install
 > redux react-redux<br>
-> redux-devtools-extension
+> redux-devtools-extension<br>
+> immer
 ___
 
 ## export 와 export default의 차이
